@@ -1,18 +1,32 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
+    <!-- <GetJewlery /> -->
+    <NewComponent cateName="Electronics" :fechDataUrl="GetElectronicsProducts" />
+    <NewComponent cateName="Jewelery" :fechDataUrl="GetJeweleryProducts" />
+    <NewComponent cateName="Men's clothings" :fechDataUrl="GetMenClothingProducts" />
+    <NewComponent cateName="Women's clothings" :fechDataUrl="GetWomenClothingProducts" />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+import GetJewlery from "@/components/GetJewelery.vue";
+import NewComponent from "@/components/NewComponent.vue"
+import { GetElectronicsProducts, GetJeweleryProducts, GetMenClothingProducts, GetWomenClothingProducts } from '@/Service/getHttpData'
 
 export default Vue.extend({
   name: 'Home',
   components: {
-    HelloWorld,
+    GetJewlery,
+    NewComponent,
   },
+  methods: {
+    GetElectronicsProducts,
+    GetJeweleryProducts,
+    GetMenClothingProducts,
+    GetWomenClothingProducts
+  }
+  
 });
 </script>
