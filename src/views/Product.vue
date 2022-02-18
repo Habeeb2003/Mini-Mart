@@ -1,10 +1,10 @@
 <template>
     <main class="content container proPageMain">
-        <section class="p-5" style="width: 100%; display: flex; justify-content: space-between; flex-wrap: wrap;">
+        <section class="p-5" style="height: fit-content; width: 70%; display: flex; justify-content: space-between; flex-wrap: wrap;">
             <div class="pictSect">
-                <div class="imParent">
+                <div class="imParent p-3">
                     <img v-if="!loading" :src="product.image" alt="" style="width: 100%; height: 200px;" >
-                    <b-skeleton size="is-large" width="100%" height="200px" position="is-centered" :active="loading"></b-skeleton>
+                    <b-skeleton size="is-large" width="100%" height="175px" position="is-centered" :active="loading"></b-skeleton>
                 </div>
             </div>
             <div class="tiSect p-5">
@@ -26,17 +26,30 @@
                     <button v-if="!loading" class="btn btn-danger">ADD TO CART</button>
                 </div>
             </div>
-            <div class="proDescDiv p-5">
+            <div class="proDescDiv mt-4 p-5">
                 <b-skeleton size="is-large" width="100%" height="" position="is-centered" :active="loading"></b-skeleton>
                 <b-skeleton size="is-large" width="100%" height="200px" position="is-centered" :active="loading"></b-skeleton>
                 <h4  v-if="!loading" class="text-center">Description</h4>
                 <p v-if="!loading" >{{product.description}}</p>
             </div>
+            <div class="proSpecDiv mt-4 p-5">
+                <b-skeleton size="is-large" width="100%" height="" position="is-centered" :active="loading"></b-skeleton>
+                <b-skeleton size="is-large" width="100%" height="200px" position="is-centered" :active="loading"></b-skeleton>
+            </div>
+            <div class="proSimiDiv mt-4 p-5">
+                <NewComponent cateName="Jewelery" :fechDataUrl="GetJeweleryProducts" />
+            </div>
         </section>
         <section class="miscSect mt-5">
-            <b-skeleton size="is-large" width="100%" height="200px" position="is-centered" :active="loading"></b-skeleton>
-            <div>
+            <div class="p-3">
+                <b-skeleton size="is-large" width="50%" height="" position="is-centered" :active="loading"></b-skeleton>
+                <b-skeleton size="is-large" width="100%" height="200px" position="is-centered" :active="loading"></b-skeleton>
                 
+            </div>
+            <div class="p-3 mt-3">
+                <b-skeleton size="is-large" width="50%" height="" position="is-centered" :active="loading"></b-skeleton>
+            <b-skeleton size="is-large" width="100%" height="350px" position="" :active="loading"></b-skeleton>
+
             </div>
         </section>
         
@@ -45,6 +58,7 @@
 
 <script>
 
+import NewComponent from '@/components/NewComponent.vue'
 import { GetAProductWithId } from '@/Service/getHttpData'
 
 export default {
@@ -53,6 +67,9 @@ export default {
             loading: true,
             product: {},
         }
+    },
+    components: {
+        NewComponent
     },
     mounted(){
         //console.log(this.$route.params);
@@ -71,32 +88,34 @@ export default {
        display: flex; 
        justify-content: space-evenly;
     }
-    .pictSect, .tiSect, .miscSect{
+    .pictSect, .tiSect, .miscSect div{
         background-color: gray;
         
     }
     .pictSect{
         width: 40%;
-        height: 200px;
+        height: auto;
         border-radius: 15px;
         margin-top: 5px;
         margin-bottom: 5px;
     }
     .tiSect{
         width: 55%;
-        height: 200px;
+        height: auto;
         border-radius: 15px;
         margin-top: 5px;
         margin-bottom: 5px;
     }
     .miscSect{
-        width: 40%;
-        height: 200px;
-        border-radius: 15px;
+        width: 30%;
+        height: auto;
         margin-top: 5px;
         margin-bottom: 5px;
     }
-    .proDescDiv{
+    .miscSect div{
+        border-radius: 15px;
+    }
+    .proDescDiv, .proSpecDiv, .proSimiDiv{
         width: 100%;
         background-color: gray;
         border-radius: 15px;

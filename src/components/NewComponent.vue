@@ -1,5 +1,5 @@
 <template>
-    <section class="container mt-4 mb-4">
+    <section class="mt-4 mb-4">
         <div class="cateDiv" style="">
             <h3 class="mr-4" style="color: white;">{{cateName}}</h3>
             <span class="">See all <i class="fa fa-arrow-right"></i></span>
@@ -16,7 +16,7 @@
                 </div>
                 <div class="proTiPrRaDiv">
                     <b-skeleton size="is-large" width="" height="" :count='3' position="is-centered" :active="loading"></b-skeleton>
-                    <div style="height: 67px; color: #FFFFFF;">
+                    <div v-if="!loading" style="height: 67px; color: #FFFFFF;">
                         <h5 v-if="!loading" id="title">{{product.title.slice(0,15)}}...</h5>
                         <p v-if="!loading" id="price">#{{product.price}}</p>
                         <span v-if="!loading" id="ratings"><b-rate v-model="product.rating.rate" :icon-pack="'fa'" :icon="'star'" :max="5" :size="'5'" :rtl="false" :spaced="true" :custom-text="'(' + product.rating.count +')'" :disabled="true"></b-rate></span>
@@ -33,7 +33,7 @@
                 </div>
                 <div class="proTiPrRaDiv">
                     <b-skeleton size="is-large" width="" height="" :count='3' position="is-centered" :active="loading"></b-skeleton>
-                    <div style="height: 67px; color: #FFFFFF;">
+                    <div v-if="!loading" style="height: 67px; color: #FFFFFF;">
                         <h5 v-if="!loading" id="title"></h5>
                         <p v-if="!loading" id="price"></p>
                         <p v-if="!loading" id="ratings"></p>
@@ -50,7 +50,7 @@
                 </div>
                 <div class="proTiPrRaDiv">
                     <b-skeleton size="is-large" width="" height="" :count='3' position="is-centered" :active="loading"></b-skeleton>
-                    <div style="height: 67px; color: #FFFFFF;">
+                    <div v-if="!loading" style="height: 67px; color: #FFFFFF;">
                         <h5 v-if="!loading" id="title"></h5>
                         <p v-if="!loading" id="price"></p>
                         <p v-if="!loading" id="ratings"></p>
@@ -67,7 +67,7 @@
                 </div>
                 <div class="proTiPrRaDiv">
                     <b-skeleton size="is-large" width="" height="" :count='3' position="is-centered" :active="loading"></b-skeleton>
-                    <div style="height: 67px; color: #FFFFFF;">
+                    <div v-if="!loading" style="height: 67px; color: #FFFFFF;">
                         <h5 v-if="!loading" id="title"></h5>
                         <p v-if="!loading" id="price"></p>
                         <p v-if="!loading" id="ratings"></p>
@@ -84,7 +84,7 @@
                 </div>
                 <div class="proTiPrRaDiv">
                     <b-skeleton size="is-large" width="" height="" :count='3' position="is-centered" :active="loading"></b-skeleton>
-                    <div style="height: 67px; color: #FFFFFF;">
+                    <div v-if="!loading" style="height: 67px; color: #FFFFFF;">
                         <h5 v-if="!loading" id="title"></h5>
                         <p v-if="!loading" id="price"></p>
                         <p v-if="!loading" id="ratings"></p>
@@ -101,7 +101,7 @@
                 </div>
                 <div class="proTiPrRaDiv">
                     <b-skeleton size="is-large" width="" height="" :count='3' position="is-centered" :active="loading"></b-skeleton>
-                    <div style="height: 67px; color: #FFFFFF;">
+                    <div v-if="!loading" style="height: 67px; color: #FFFFFF;">
                         <h5 v-if="!loading" id="title"></h5>
                         <p v-if="!loading" id="price"></p>
                         <p v-if="!loading" id="ratings"></p>
@@ -156,7 +156,8 @@ export default {
     }
     .proContainerDiv{
         width: 100%;
-        /* overflow-x: scroll; */
+        height: auto;
+        overflow: hidden;
         display: flex;
     }
     .prevNextDiv{
